@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
 import Dashboard from "./components/Dashboard";
 import Transaction from "./components/Transaction";
@@ -19,7 +19,7 @@ function App() {
 			<UserProvider>
 				<Sidebar />
 				<Routes>
-					<Route path="/" element={<Dashboard />} />
+					<Route path="/dashboard" element={<Dashboard />} />
 					<Route path="/transactions" element={<Transaction />} />
 					<Route path="/goals" element={<Goals />} />
 					{/* <Route path="/budget" element={<Budget />} /> */}

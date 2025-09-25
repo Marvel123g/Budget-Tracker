@@ -7,7 +7,7 @@ import { FiMenu, FiX } from "react-icons/fi";
 const Sidebar = () => {
 	const location = useLocation();
 	const [activePage, setActivePage] = useState("dashboard");
-	const [isOpen, setIsOpen] = useState(true);
+	const [isOpen, setIsOpen] = useState(false);
 	const { width } = useWindowSize();
 
 	const isMobile = width <= 1028;
