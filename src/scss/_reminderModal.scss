@@ -1,0 +1,14 @@
+@use "mixins" as *;
+
+.reminder-modal {
+	@include popUpStyle;
+	form {
+		@include formStyle;
+		fieldset {
+			@include fieldsetStyle;
+		}
+		.btns {
+			@include btnStyle;
+		}
+	}
+}

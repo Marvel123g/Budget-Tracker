@@ -1,0 +1,31 @@
+@use "mixins" as *;
+
+.sub-modal {
+	@include popUpStyle;
+	overflow-y: auto;
+	form {
+		@include formStyle;
+		fieldset {
+			@include fieldsetStyle;
+		}
+		select {
+			width: 100%;
+			font-weight: bold;
+			margin-top: 25px;
+			outline: none;
+			padding: 15px;
+			border-radius: 5px;
+			background-color: #1a221a;
+			border: 1px solid #2a352a;
+			color: #f5f5f4;
+			&:focus {
+				outline: none;
+				border-color: #608b37;
+				box-shadow: 0 0 0 2px rgba(74, 222, 128, 0.1);
+			}
+		}
+		.ctas {
+			@include btnStyle;
+		}
+	}
+}

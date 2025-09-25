@@ -1,0 +1,22 @@
+@use "mixins" as *;
+.goal-container {
+	@include popUpStyle;
+	.goal-form {
+		@include formStyle;
+		h3 {
+			font-size: 1.4rem;
+			font-weight: lighter;
+		}
+		.header {
+			.cancel {
+				cursor: pointer;
+			}
+		}
+		fieldset {
+			@include fieldsetStyle;
+		}
+		.ctas {
+			@include btnStyle;
+		}
+	}
+}

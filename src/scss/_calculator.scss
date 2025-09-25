@@ -1,0 +1,62 @@
+@use "mixins" as *;
+
+.calculator-page{
+    @include pageReset;
+    h1{
+        margin-left: 10px;
+        margin-bottom: 50px;
+    }
+    .calculator-box{
+        max-width: 500px;
+        margin: 0 auto;
+        background-color: #151b15;
+        border: 2px solid #2a352a;
+        padding: 20px;
+        border-radius: 5px;
+        h3{
+            font-size: 26px;
+            font-weight: lighter;
+        }
+        form{
+            width: 100%;
+            fieldset{
+                border: none;
+                margin-top: 20px;
+                label{
+                    font-size: 18px;
+                }
+                input{
+                    padding: 10px;
+                    border-radius: 5px;
+                    font-weight: bold;
+                    outline: none;
+                    background-color: #1a221a;
+                    border: 1px solid #2a352a;
+                    color: #f5f5f4;
+                }
+                .errorMssg{
+                    color: red;
+                    margin-top: 2px;
+                    font-size: 14px;
+                }
+            }
+        }
+        button{
+            margin-top: 40px;
+            padding: 13px;
+            background-color: #608b37;
+            color: white;
+            font-weight: bold;
+            border: none;
+            font-size: 17px;
+        }
+        .result{
+            background-color: #eaff6b22;
+            color: #f5f5f4;
+            margin-top: 50px;
+            padding: 18px;
+            font-size: 1.2rem;
+
+        }
+    }
+}

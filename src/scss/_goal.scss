@@ -1,0 +1,92 @@
+@use "mixins" as *;
+
+.goal-page {
+	color: white;
+	@include pageReset;
+	.goal-header {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+		gap: 30px;
+		.goal {
+			width: 100%;
+			background-color: #151b15;
+			border: 1px solid #2a352a;
+			&:nth-child(1) {
+				.icon {
+					background-color: #1a3010;
+					color: #608b37;
+				}
+			}
+			&:nth-child(2) {
+				.icon {
+					background-color: #1f2b1f;
+					color: #7c9c5e;
+				}
+			}
+			&:nth-child(3) {
+				.icon {
+					background-color: #2b1f0f;
+					color: #b8915f;
+				}
+			}
+			&:nth-child(4) {
+				.icon {
+					background-color: #8b5cf6;
+					color: #0a0f0a;
+				}
+			}
+			.icon {
+				padding: 7px;
+			}
+		}
+	}
+	.list-heading {
+		margin-top: 5rem;
+		.add-cta {
+			@include addButton;
+		}
+	}
+	.goal-box {
+		margin-top: 30px;
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: 20px;
+		.list {
+			background-color: #151b15;
+			border: 1px solid #2a352a;
+			header {
+				margin-bottom: 30px;
+				.list-header {
+					.goal-action {
+						gap: 10px;
+						@include actionBtnStyle;
+					}
+				}
+				.des {
+					font-size: 14px;
+					margin: 10px 0;
+					width: 100%;
+					word-wrap: break-word;
+				}
+			}
+			.progress-section {
+				color: white;
+				margin-top: 50px;
+				.p-bar {
+					width: 100%;
+					background-color: #2f3a2f;
+					height: 10px;
+					margin-top: 10px;
+					.p-bar-filled {
+						background-color: #608b37;
+						height: 100%;
+						transition: width 1s ease-in-out;
+					}
+				}
+				.p-amount {
+					margin-top: 10px;
+				}
+			}
+		}
+	}
+}

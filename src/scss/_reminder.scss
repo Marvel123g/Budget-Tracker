@@ -1,0 +1,44 @@
+@use "mixins" as *;
+
+.reminder-page {
+	@include pageReset;
+	.header {
+		button {
+			@include addButton;
+		}
+		@media (max-width: 1280px) {
+			margin-top: 10px;
+		}
+	}
+	.box {
+		gap: 30px;
+		margin-top: 40px;
+		.list {
+			background-color: #151b15;
+			border: 1px solid #2a352a;
+			padding: 20px;
+			span {
+				background: #7c9c5e;
+				color: #0a0f0a;
+				padding: 8px;
+				border-radius: 13px;
+				font-weight: bold;
+				font-size: 0.85rem;
+			}
+			.icon {
+				cursor: pointer;
+				border-radius: 6px;
+				background-color: #1a221a;
+				border: 1px solid #2a352a;
+				padding: 0.5rem;
+				color: #a8b5a8;
+				transition: all 150ms ease;
+				&:hover {
+					scale: (1.1);
+					color: #608b37;
+					border-color: #608b37;
+				}
+			}
+		}
+	}
+}

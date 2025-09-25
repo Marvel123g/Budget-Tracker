@@ -1,0 +1,55 @@
+.flex {
+	display: flex;
+}
+.flex-col {
+	flex-direction: column;
+}
+.align-center {
+	align-items: center;
+}
+.align-left {
+	align-items: flex-start;
+}
+.justify-center {
+	justify-content: center;
+}
+.space-between {
+	justify-content: space-between;
+}
+.p-10 {
+	padding: 10px;
+}
+.mt-30 {
+	margin-top: 20px;
+}
+.p-20 {
+	padding: 20px;
+}
+.p-25 {
+	padding: 25px;
+}
+.g-15 {
+	gap: 15px;
+}
+.g-5 {
+	gap: 5px;
+}
+.g-10 {
+	gap: 10px;
+}
+.rounded {
+	border-radius: 5px;
+}
+.rounded-1 {
+	border-radius: 10px;
+}
+.fw-bold {
+	font-weight: bold;
+}
+.errorMssg {
+	color: red;
+	font-size: 13px;
+}
+.pointer {
+	cursor: pointer;
+}

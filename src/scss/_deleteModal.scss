@@ -1,0 +1,47 @@
+@use "mixins" as *;
+
+.deleteModal {
+	@include popUpStyle;
+	.modalBox {
+		background-color: #151b15;
+		border: 2px solid #2a352a;
+		color: white;
+		width: 100%;
+		max-width: 500px;
+		padding: 1.5rem;
+		border-radius: 10px;
+		border: 1px solid #ccc;
+		position: relative;
+		.alert {
+			color: rgb(224, 18, 18);
+			margin-bottom: 20px;
+		}
+		.delete-title {
+			text-transform: capitalize;
+		}
+		h2 {
+			margin: 5px 0;
+		}
+		.ctas {
+			width: 100%;
+			gap: 20px;
+			margin-top: 20px;
+			button {
+				padding: 15px;
+				width: 100%;
+				font-weight: bold;
+				border: none;
+				cursor: pointer;
+				border-radius: 5px;
+				color: white;
+				&:nth-child(1) {
+					border: 2px solid #608b37;
+					background-color: #bd5353;
+				}
+				&:nth-child(2) {
+					background-color: #608b37;
+				}
+			}
+		}
+	}
+}

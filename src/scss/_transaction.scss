@@ -1,0 +1,110 @@
+@use "mixins" as *;
+.trasanction-page {
+	@include pageReset;
+	h1 {
+		color: white;
+	}
+	.input-field {
+		gap: 2rem;
+		input {
+			background-color: #151b15;
+			border: none;
+			box-shadow: 0px 1px 3px 0 rgb(255, 254, 254);
+			color: #f5f5f4;
+			width: 100%;
+			padding: 1em 0.75em;
+			font-size: 0.8rem;
+			&::placeholder {
+				color: #f5f5f4;
+			}
+		}
+		select {
+			background-color: #151b15;
+			border: 1px solid #2a352a;
+			box-shadow: 0px 1px 3px 0 rgb(255, 254, 254);
+			color: whitesmoke;
+			width: 100%;
+			&:focus {
+				outline: none;
+				border-color: #608b37;
+			}
+			option {
+				background-color: #151b15;
+				color: #f5f5f4;
+			}
+		}
+		button {
+			cursor: pointer;
+			width: 50%;
+			background-color: #9cc773;
+			border: transparent;
+			padding: 10px;
+			&:hover {
+				transform: translateY(-1px);
+			}
+		}
+
+		@media (max-width: 1280px) {
+			gap: 1rem;
+			input {
+				font-size: 0.7rem;
+			}
+			button {
+				width: 100%;
+				padding: 0px;
+			}
+		}
+		@media (max-width: 652px) {
+			flex-direction: column;
+			button {
+				padding: 10px;
+			}
+		}
+	}
+	.totals {
+		margin: 40px 0;
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+		gap: 20px;
+		.t-transaction {
+			background-color: #151b15;
+			border: 1px solid #2a352a;
+			width: 100%;
+			span {
+				font-size: 2rem;
+				color: #f5f5f4;
+			}
+			p {
+				color: #a8b5a8;
+				font-size: 0.875rem;
+			}
+		}
+		.t-income {
+			@extend .t-transaction;
+		}
+		.t-expenses {
+			@extend .t-transaction;
+		}
+		.category {
+			@extend .t-transaction;
+		}
+	}
+}
+.trans-page {
+	border: 1px solid rgba(255, 255, 255, 0.25);
+	border-radius: 10px;
+	.table {
+		cursor: pointer;
+		@include tableStyling;
+		// border-radius: 10px;
+		.Mssg {
+			text-align: center;
+			margin: 40px 0;
+			color: red;
+			font-weight: bold;
+		}
+	}
+	.action {
+		@include actionBtnStyle;
+	}
+}

@@ -1,0 +1,44 @@
+@use "mixins" as *;
+
+.subscription-page {
+	@include pageReset;
+	.header {
+		margin-bottom: 40px;
+		button {
+			@include addButton;
+			@media (max-width: 415px) {
+				padding: 10px;
+				font-size: 12px;
+				// width: 100%;
+				// font-weight: lighter;
+			}
+		}
+		@media (max-width: 1280px) {
+			margin-top: 10px;
+		}
+		@media (max-width: 415px) {
+			// gap: 1rem;
+			h1 {
+				font-size: 22px;
+			}
+		}
+	}
+	.sub-page {
+		border: 1px solid rgba(255, 255, 255, 0.25);
+		border-radius: 10px;
+		.table {
+			cursor: pointer;
+			@include tableStyling;
+			// border-radius: 10px;
+			.Mssg {
+				text-align: center;
+				margin: 0;
+				color: red;
+				font-weight: bold;
+			}
+		}
+		.action {
+			@include actionBtnStyle;
+		}
+	}
+}

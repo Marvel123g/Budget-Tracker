@@ -1,0 +1,212 @@
+@mixin pageReset {
+	// margin-left: 300px;
+	width: 100%;
+	padding: 20px;
+	overflow-y: auto;
+	height: 100vh;
+	box-sizing: border-box;
+	@media (max-width: 1028px) {
+		margin-top: 40px;
+	}
+}
+@mixin popUpStyle {
+	background-color: rgba(0, 0, 0, 0.5);
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+@mixin boxStyling {
+	max-width: 600px;
+	margin: 0 auto;
+	margin-top: 40px !important;
+	padding: 30px;
+	background-color: #151b15;
+	border: 2px solid #2a352a;
+	border-radius: 10px;
+	.title {
+		font-size: 28px;
+		font-weight: bold;
+		margin-bottom: 30px;
+	}
+}
+@mixin actionBtnStyle {
+	button {
+		cursor: pointer;
+		border-radius: 6px;
+		background-color: #1a221a;
+		border: 1px solid #2a352a;
+		padding: 0.5rem;
+		color: #a8b5a8;
+		transition: all 150ms ease;
+	}
+	.icon {
+		&:hover {
+			scale: (1.1);
+			color: #608b37;
+			border-color: #608b37;
+		}
+	}
+	@media (max-width: 798px) {
+		button {
+			padding: 0.2rem;
+		}
+		.fi {
+			width: 15px;
+			height: 15px;
+		}
+	}
+}
+@mixin fieldsetStyle {
+	border: none;
+	margin-top: 10px;
+	label {
+		font-size: 20px;
+		margin-bottom: 2px;
+		margin-top: 10px;
+	}
+	input {
+		padding: 10px;
+		border-radius: 5px;
+		font-weight: bold;
+		outline: none;
+		background-color: #1a221a;
+		border: 1px solid #2a352a;
+		color: #f5f5f4;
+		&:focus {
+			outline: none;
+			border-color: #608b37;
+			box-shadow: 0 0 0 2px rgba(74, 222, 128, 0.1);
+		}
+		&::placeholder {
+			color: #a8b5a8;
+		}
+	}
+	textarea {
+		min-height: 17vh;
+		@extend input;
+	}
+	@media (max-width: 1280px) {
+		margin-top: 8px;
+		label {
+			font-size: 16px;
+			margin-bottom: 0;
+			margin-top: 6px;
+		}
+		input {
+			padding: 6px;
+		}
+	}
+}
+@mixin btnStyle {
+	margin-top: 30px;
+	border: none;
+	justify-content: space-between;
+	width: 100%;
+	gap: 20px;
+	button {
+		width: 100%;
+		padding: 13px;
+		font-size: 16px;
+		font-weight: bold;
+		background-color: #9cc773;
+		border-radius: 5px;
+		border: none;
+		cursor: pointer;
+		&:hover {
+			opacity: 0.7;
+		}
+		&:nth-child(1) {
+			background-color: #3d3d3da9;
+			color: white;
+			width: 50%;
+			&:hover {
+				color: green;
+				border: 1px solid green;
+			}
+		}
+	}
+	@media (max-width: 1280px) {
+		margin-top: 15px;
+		button {
+			padding: 9px;
+			font-size: 14px;
+		}
+	}
+}
+@mixin formStyle {
+	background-color: #151b15;
+	border: 2px solid #2a352a;
+	color: white;
+	width: 100%;
+	max-width: 500px;
+	// min-height: 20vh;
+	padding: 1rem;
+	border-radius: 10px;
+	// position: relative;
+}
+@mixin addButton {
+	padding: 17px;
+	border: none;
+	border-radius: 5px;
+	background-color: #9cc773;
+	&:hover {
+		cursor: pointer;
+		transform: translateY(-1px);
+	}
+}
+@mixin tableStyling {
+	background-color: #151b15;
+	border: 1px solid #2a352a;
+	border-radius: 0.75rem;
+	overflow: hidden;
+	.table-header {
+		.list {
+			display: grid;
+			grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr 150px;
+			gap: 1rem;
+			padding: 1rem;
+			background-color: #121812;
+			border-bottom: 1px solid #2a352a;
+			font-weight: 600;
+			color: #a8b5a8;
+			text-transform: uppercase;
+			font-size: 0.75rem;
+			letter-spacing: 0.05em;
+			@media (max-width: 768px) {
+				grid-template-columns: 1.5fr 1fr 100px;
+			}
+		}
+	}
+	.table-body {
+		.items {
+			display: grid;
+			grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr 150px;
+			gap: 1rem;
+			padding: 1rem;
+			border-bottom: 1px solid #2a352a;
+			span {
+				padding: 4px;
+				border-radius: 10px;
+				background: #1a3010;
+				color: #608b37;
+				font-size: 0.9rem;
+			}
+			.type {
+				background: #7c9c5e;
+				color: #0a0f0a;
+				font-size: 0.9rem;
+			}
+			&:hover {
+				background-color: #1a221a;
+			}
+			&:last-child {
+				border-bottom: none;
+			}
+			@media (max-width: 768px) {
+				grid-template-columns: 1.5fr 1fr 100px;
+			}
+		}
+	}
+}

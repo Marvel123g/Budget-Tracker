@@ -1,0 +1,19 @@
+@use "mixins" as *;
+
+.help-page {
+	@include pageReset;
+	h1 {
+		margin-top: 10px;
+	}
+	.box {
+		@include boxStyling;
+		.item {
+			p {
+				font-size: 20px;
+			}
+			span {
+				font-size: 17px;
+			}
+		}
+	}
+}

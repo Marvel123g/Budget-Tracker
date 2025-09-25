@@ -1,0 +1,32 @@
+@use "mixins" as *;
+
+.view-page{
+    @include popUpStyle; 
+}
+.page{
+    background-color: #151b15;
+    border: 2px solid #2a352a;
+    color: white;
+    width: 100%;
+    max-width: 500px;
+    padding: 1.8rem;
+    border-radius: 10px;
+    position: relative;
+    .page-header{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 18px;
+            margin-bottom: -1rem;
+        }
+    }
+    .cancel-btn{
+        cursor: pointer;
+    }
+    .page-list{
+        margin-top: 20px;
+        // font-size: 1.2rem;
+        b{
+            font-size: 1rem;
+        }
+    }

@@ -1,0 +1,23 @@
+@use "mixins" as *;
+
+.budget-page {
+	color: white;
+	@include pageReset;
+	.box {
+		@include boxStyling;
+		.item {
+			.progress {
+				.p-bar {
+					width: 100%;
+					background-color: #2f3a2f;
+					height: 10px;
+					.p-fill {
+						background-color: #608b37;
+						height: 100%;
+						transition: width 1s ease-in-out;
+					}
+				}
+			}
+		}
+	}
+}
