@@ -15,5 +15,13 @@
 				font-size: 17px;
 			}
 		}
+		@media (max-width: 490px) {
+			padding: 13px;
+			.item {
+				span {
+					font-size: 15px;
+				}
+			}
+		}
 	}
 }

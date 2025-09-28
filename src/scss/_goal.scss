@@ -45,6 +45,14 @@
 		.add-cta {
 			@include addButton;
 		}
+		@media (max-width: 490px) {
+			h1 {
+				font-size: 1.7rem;
+			}
+			.add-cta {
+				padding: 10px;
+			}
+		}
 	}
 	.goal-box {
 		margin-top: 30px;

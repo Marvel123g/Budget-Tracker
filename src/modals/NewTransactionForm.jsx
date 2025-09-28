@@ -3,7 +3,8 @@ import { FiX, FiTrendingDown, FiTrendingUp } from "react-icons/fi";
 import UserContext from "../context/contextAPI";
 
 const NewTransactionForm = ({ handleCloseAddTransaction, editData }) => {
-	const { setTransactions, editTransaction } = useContext(UserContext);
+	const { setTransactions, editTransaction, transactions } =
+		useContext(UserContext);
 	const [activeTab, setActiveTab] = useState(
 		editData ? editData.type : "expense"
 	);

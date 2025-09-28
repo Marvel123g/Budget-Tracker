@@ -72,7 +72,7 @@ const GoalForm = ({ handleCloseForm, setMockGoals, editGoalData }) => {
 					<label>Target Amount</label>
 					<input
 						type="number"
-						placeholder="How much do you to save"
+						placeholder="How much do you want to save"
 						value={targetAmount}
 						onChange={(e) => setTargetAmount(e.target.value)}
 					/>

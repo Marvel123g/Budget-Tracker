@@ -4,7 +4,16 @@ import HelpItem from "./HelpItem";
 const Help = () => {
 	const helpItems = [
 		{
-			title: "1. Adding & Editing Transactions",
+			title: "1. Dashboard Overview",
+			info: (
+				<span>
+					The Dashboard gives you a summary of your balance, spending, savings,
+					and recent transactions. You can also see your goals progress here.
+				</span>
+			),
+		},
+		{
+			title: "2. Adding & Editing Transactions",
 			info: (
 				<span>
 					Go to the Transactions page, Use the button to{" "}
@@ -14,7 +23,7 @@ const Help = () => {
 			),
 		},
 		{
-			title: "2. Setting Goals",
+			title: "3. Setting Goals",
 			info: (
 				<span>
 					Navigate to the Goals page to add, edit, or delete your financial
@@ -24,16 +33,27 @@ const Help = () => {
 			),
 		},
 		{
-			title: "3. Dashboard Overview",
+			title: "4. Managing Subscriptions",
 			info: (
 				<span>
-					The Dashboard gives you a summary of your balance, spending, savings,
-					and recent transactions. You can also see your goals progress here.
+					Navigate to the <b>Subscriptions</b> page to add, edit, or remove your
+					recurring payments(e.g., Netflix, Spotify, Electricity Bills), Choose
+					whether the subscription is weekly or monthly.
 				</span>
 			),
 		},
 		{
-			title: "4. Data Persistence",
+			title: "5. Setting Remiders",
+			info: (
+				<span>
+					Go to the <b>Reminders</b> page to schedule important alerts for
+					bills, goals, or custom events. You can delete them when no longer
+					needed.
+				</span>
+			),
+		},
+		{
+			title: "6. Data Persistence",
 			info: (
 				<span>
 					All your data is stored locally in your browser. Using the clear

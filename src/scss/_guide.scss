@@ -30,4 +30,38 @@
 			}
 		}
 	}
+	@media (max-width: 500px) {
+		h1 {
+			font-size: 1.74rem;
+		}
+		.guide-box {
+			padding: 13px;
+			.title {
+				p {
+					font-size: 1.4rem;
+				}
+			}
+			section {
+				b {
+					font-size: 16px;
+				}
+				p {
+					font-size: 16px;
+					margin-top: 6px;
+				}
+				.cancel {
+					width: 15px;
+				}
+				.heart {
+					width: 15px;
+				}
+				.check {
+					width: 15px;
+				}
+				.trending {
+					width: 15px;
+				}
+			}
+		}
+	}
 }

@@ -76,9 +76,6 @@ const Subscriptions = () => {
 											</span>
 										</div>
 										<div className="item action flex align-center g-5">
-											{/* <button className="icon" onClick={() => handleView(sub)}>
-												View
-											</button> */}
 											<button className="icon">
 												<FiEdit3
 													size={18}
@@ -107,9 +104,6 @@ const Subscriptions = () => {
 								<div className="list">
 									<div className="item">NAME</div>
 									<div className="item">AMOUNT</div>
-									{/* <div className="item">FREQUENCY</div> */}
-									{/* <div className="item">NEXT DUE DATE</div> */}
-									{/* <div className="item">STATUS</div> */}
 									<div className="item">ACTIONS</div>
 								</div>
 							</div>
@@ -119,15 +113,6 @@ const Subscriptions = () => {
 									<div className="items" key={sub.id}>
 										<div className="item">{sub.name}</div>
 										<div className="item">${sub.amount.toFixed(2)}</div>
-										{/* <div className="item">{sub.frequency}</div> */}
-										{/* <div className="item">{sub.nextDueDate}</div> */}
-										{/* <div className="item">
-									<span>
-										{new Date() > new Date(sub.nextDueDate)
-											? "Done"
-											: "Pending"}
-									</span>
-								</div> */}
 										<div className="item action flex align-center g-5">
 											<button className="icon" onClick={() => handleView(sub)}>
 												View

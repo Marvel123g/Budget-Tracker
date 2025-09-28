@@ -22,6 +22,7 @@ const Dashboard = () => {
 		totalExpenses,
 		lastSevenDaysIncome,
 		lastSevenDaysExpenses,
+		totalLastSevenDaysBalance,
 	} = useContext(UserContext);
 
 	useEffect(() => {
@@ -35,7 +36,7 @@ const Dashboard = () => {
 	return (
 		<div className="dashboard-page">
 			<h1>Dashboard</h1>
-			<div className="total-section flex align-center g-15">
+			<div className="total-section">
 				<div className="list flex align-center rounded-1 bal">
 					<FiCreditCard className="icon" size={40} />
 					<div className="text">
@@ -67,7 +68,7 @@ const Dashboard = () => {
 
 			<section className="flex">
 				<div className="left ">
-					<div className="left-header flex flex-col align-center mt-30">
+					<div className="left-header flex flex-col align-center">
 						<div className="header flex align-center">
 							<h2>Working Capital (Last 7 Days)</h2>
 							<div className="sub-text flex g-15">
@@ -87,7 +88,7 @@ const Dashboard = () => {
 								</div>
 							</div>
 						</div>
-						<p>Net: $0.00</p>
+						<p>Net: ${totalLastSevenDaysBalance.toFixed(1)}</p>
 					</div>
 					<div className="semi-trans rounded-1">
 						<div className="header flex space-between align-center">
@@ -97,7 +98,7 @@ const Dashboard = () => {
 						<div className="table">
 							<div className="table-header">
 								<div className="list">
-									<div className="item">NAME/BUSINESS</div>
+									<div className="item">NAME</div>
 									<div className="item">TYPE</div>
 									<div className="item">AMOUNT</div>
 									<div className="item">DATE</div>

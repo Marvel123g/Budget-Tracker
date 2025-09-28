@@ -19,7 +19,7 @@ function App() {
 			<UserProvider>
 				<Sidebar />
 				<Routes>
-					<Route path="/dashboard" element={<Dashboard />} />
+					<Route path="/" element={<Dashboard />} />
 					<Route path="/transactions" element={<Transaction />} />
 					<Route path="/goals" element={<Goals />} />
 					{/* <Route path="/budget" element={<Budget />} /> */}

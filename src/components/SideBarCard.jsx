@@ -12,8 +12,8 @@ import {
 	FiPercent,
 	FiMenu,
 	FiPlusSquare,
-	FiCalendar,
-	FiTarget,
+	FiRepeat,
+	FiBell,
 	FiUser,
 } from "react-icons/fi";
 const SideBarCard = ({ activePage, onLinkClick }) => {
@@ -71,7 +71,7 @@ const SideBarCard = ({ activePage, onLinkClick }) => {
 						}`}
 						onClick={onLinkClick}
 					>
-						<FiPlusSquare className="icon" />
+						<FiRepeat className="icon" />
 						<p>Subscriptions</p>
 					</Link>
 					<Link
@@ -81,7 +81,7 @@ const SideBarCard = ({ activePage, onLinkClick }) => {
 						}`}
 						onClick={onLinkClick}
 					>
-						<FiBook className="icon" />
+						<FiBell className="icon" />
 						<p>Reminders</p>
 					</Link>
 					<Link
