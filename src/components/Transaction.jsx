@@ -63,17 +63,16 @@ const Transaction = () => {
 	};
 
 	const filteredSearch = transactions.filter((transaction) => {
-		const matchSearch = transaction.title
-			.toLowerCase()
-			.includes(search.toLowerCase());
+		const title = (transaction.title || "").toString().toLowerCase();
+		const type = (transaction.type || "").toString().toLowerCase();
+		const category = (transaction.category || "").toString().toLowerCase();
+		const searchTerm = (search || "").toString().toLowerCase();
 
-		const matchType =
-			filterType === "all" ||
-			transaction.type.toLowerCase() === filterType.toLowerCase();
+		const matchSearch = title.includes(searchTerm);
+		const matchType = filterType === "all" || type === filterType.toLowerCase();
 
 		const matchCategory =
-			filterCategory === "all" ||
-			transaction.category.toLowerCase() === filterCategory.toLowerCase();
+			filterCategory === "all" || category === filterCategory.toLowerCase();
 
 		return matchSearch && matchType && matchCategory;
 	});

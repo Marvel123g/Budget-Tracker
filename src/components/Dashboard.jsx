@@ -104,16 +104,16 @@ const Dashboard = () => {
 									<div className="item">DATE</div>
 								</div>
 							</div>
-							{transactions.slice(0, 5).map((transaction) => (
-								<div className="table-body" key={transaction.id}>
-									<div className="items">
+							<div className="table-body">
+								{transactions.slice(0, 5).map((transaction) => (
+									<div className="items" key={transaction.id}>
 										<div className="item">{transaction.title}</div>
 										<div className="item">{transaction.type}</div>
 										<div className="item">{transaction.amount}</div>
 										<div className="item">{transaction.date}</div>
 									</div>
-								</div>
-							))}
+								))}
+							</div>
 						</div>
 					</div>
 				</div>

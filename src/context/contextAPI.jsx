@@ -5,107 +5,104 @@ const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
 	const [transactions, setTransactions] = useState(() => {
-		const saved = localStorage.getItem("transactions");
-		return saved
-			? JSON.parse(saved)
+		const savedTransactions = localStorage.getItem("transaction");
+		return savedTransactions
+			? JSON.parse(savedTransactions)
 			: [
-					[
-						{
-							id: "1",
-							title: "Salary Payment",
-							amount: 4200,
-							type: "income",
-							category: "Salary",
-							date: "2024-01-08",
-							description: "Monthly salary",
-						},
-						{
-							id: "2",
-							title: "Grocery Shopping",
-							amount: 85.5,
-							type: "expense",
-							category: "Food & Dining",
-							date: "2024-01-09",
-							description: "Weekly groceries",
-						},
-						{
-							id: "3",
-							title: "Freelance Work",
-							amount: 750,
-							type: "income",
-							category: "Freelance",
-							date: "2024-01-10",
-							description: "Website development project",
-						},
-						{
-							id: "4",
-							title: "Gas Station",
-							amount: 45.2,
-							type: "expense",
-							category: "Transportation",
-							date: "2024-01-11",
-							description: "Fuel for car",
-						},
-						{
-							id: "5",
-							title: "Online Purchase",
-							amount: 120,
-							type: "expense",
-							category: "Shopping",
-							date: "2024-01-12",
-							description: "Books and electronics",
-						},
-						{
-							id: "6",
-							title: "Electricity Bill",
-							amount: 95.3,
-							type: "expense",
-							category: "Utilities",
-							date: "2024-01-13",
-							description: "Monthly electricity bill",
-						},
-						{
-							id: "7",
-							title: "Investment Dividend",
-							amount: 320,
-							type: "income",
-							category: "Investment",
-							date: "2024-01-14",
-							description: "Quarterly dividend payment",
-						},
-						{
-							id: "8",
-							title: "Investment ",
-							amount: 300,
-							type: "income",
-							category: "Investment",
-							date: "2024-01-15",
-							description: "Quarterly payment",
-						},
-						{
-							id: "9",
-							title: "Real Estate",
-							amount: 3200,
-							type: "income",
-							category: "Investment",
-							date: "2024-01-16",
-							description: "Real Estate Property payment",
-						},
-						{
-							id: "10",
-							title: "Restaurant Dinner",
-							amount: 65.8,
-							type: "expense",
-							category: "Food & Dining",
-							date: "2024-01-17",
-							description: "Dinner with friends",
-						},
-					],
+					{
+						id: "1",
+						title: "Salary Payment",
+						amount: 4200,
+						type: "income",
+						category: "Salary",
+						date: "2024-01-08",
+						description: "Monthly salary",
+					},
+					{
+						id: "2",
+						title: "Grocery Shopping",
+						amount: 85.5,
+						type: "expense",
+						category: "Food & Dining",
+						date: "2024-01-09",
+						description: "Weekly groceries",
+					},
+					{
+						id: "3",
+						title: "Freelance Work",
+						amount: 750,
+						type: "income",
+						category: "Freelance",
+						date: "2024-01-10",
+						description: "Website development project",
+					},
+					{
+						id: "4",
+						title: "Gas Station",
+						amount: 45.2,
+						type: "expense",
+						category: "Transportation",
+						date: "2024-01-11",
+						description: "Fuel for car",
+					},
+					{
+						id: "5",
+						title: "Online Purchase",
+						amount: 120,
+						type: "expense",
+						category: "Shopping",
+						date: "2024-01-12",
+						description: "Books and electronics",
+					},
+					{
+						id: "6",
+						title: "Electricity Bill",
+						amount: 95.3,
+						type: "expense",
+						category: "Utilities",
+						date: "2024-01-13",
+						description: "Monthly electricity bill",
+					},
+					{
+						id: "7",
+						title: "Investment Dividend",
+						amount: 320,
+						type: "income",
+						category: "Investment",
+						date: "2024-01-14",
+						description: "Quarterly dividend payment",
+					},
+					{
+						id: "8",
+						title: "Investment ",
+						amount: 300,
+						type: "income",
+						category: "Investment",
+						date: "2024-01-15",
+						description: "Quarterly payment",
+					},
+					{
+						id: "9",
+						title: "Real Estate",
+						amount: 3200,
+						type: "income",
+						category: "Investment",
+						date: "2024-01-16",
+						description: "Real Estate Property payment",
+					},
+					{
+						id: "10",
+						title: "Restaurant Dinner",
+						amount: 65.8,
+						type: "expense",
+						category: "Food & Dining",
+						date: "2024-01-17",
+						description: "Dinner with friends",
+					},
 			  ];
 	});
-
 	useEffect(() => {
-		localStorage.setItem("transactions", JSON.stringify(transactions));
+		localStorage.setItem("transaction", JSON.stringify(transactions));
 	}, [transactions]);
 
 	const [mockGoals, setMockGoals] = useState(() => {
@@ -225,7 +222,7 @@ export const UserProvider = ({ children }) => {
 		localStorage.setItem("sub", JSON.stringify(subscriptionData));
 	}, subscriptionData);
 
-	const { width } = useWindowSize;
+	const { width } = useWindowSize();
 
 	const editTransaction = (id, updatedTransaction) => {
 		setTransactions((prev) =>
