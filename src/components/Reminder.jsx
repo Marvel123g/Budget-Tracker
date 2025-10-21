@@ -1,53 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { FiPlus, FiTrash2 } from "react-icons/fi";
 import ReminderModal from "../modals/ReminderModal";
+import UserContext from "../context/contextAPI";
 
 const Reminder = () => {
-	const [reminderData, setReminderData] = useState(() => {
-		const savedReminder = localStorage.getItem("reminder");
-		return savedReminder
-			? JSON.parse(savedReminder)
-			: [
-					{
-						id: 1,
-						title: "Pay electricity bill",
-						dueDate: "2025-11-05",
-					},
-					{
-						id: 2,
-						title: "Save $200 for December travel",
-						dueDate: "2024-11-30",
-					},
-					{
-						id: 3,
-						title: "Renew car insurance",
-						dueDate: "2024-12-01",
-					},
-					{
-						id: 4,
-						title: "Transfer $50 to savings account",
-						dueDate: "2024-10-25",
-					},
-					{
-						id: 5,
-						title: "Pay credit card bill",
-						dueDate: "2024-10-29",
-					},
-					{
-						id: 6,
-						title: "Buy birthday gift for Mom",
-						dueDate: "2024-11-12",
-					},
-					{
-						id: 7,
-						title: "Review monthly budget",
-						dueDate: "2024-11-01",
-					},
-			  ];
-	});
-	useEffect(() => {
-		localStorage.setItem("reminder", JSON.stringify(reminderData));
-	}, [reminderData]);
+	const { reminderData, setReminderData } = useContext(UserContext);
 
 	const [showReminderModal, setShowReminderModal] = useState(false);
 
@@ -74,23 +31,27 @@ const Reminder = () => {
 				</button>
 			</div>
 			<div className="box flex flex-col">
-				{reminderData.map((reminder) => (
-					<div
-						className="list rounded-1 flex space-between align-center"
-						key={reminder.id}
-					>
-						<h3>{reminder.title}</h3>
-						<div className="left flex align-center g-15">
-							<p>{reminder.dueDate}</p>
-							<span>
-								{new Date() > new Date(reminder.dueDate) ? "Done" : "Pending"}
-							</span>
-							<button className="icon" onClick={() => handleDelete(reminder)}>
-								<FiTrash2 size={18} className="trash" />
-							</button>
+				{reminderData.length > 0 ? (
+					reminderData.map((reminder) => (
+						<div
+							className="list rounded-1 flex space-between align-center"
+							key={reminder.id}
+						>
+							<h3>{reminder.title}</h3>
+							<div className="left flex align-center g-15">
+								<p>{reminder.dueDate}</p>
+								<span>
+									{new Date() > new Date(reminder.dueDate) ? "Done" : "Pending"}
+								</span>
+								<button className="icon" onClick={() => handleDelete(reminder)}>
+									<FiTrash2 size={18} className="trash" />
+								</button>
+							</div>
 						</div>
-					</div>
-				))}
+					))
+				) : (
+					<p className="Mssg">No reminder date set</p>
+				)}
 			</div>
 			{showReminderModal && (
 				<ReminderModal

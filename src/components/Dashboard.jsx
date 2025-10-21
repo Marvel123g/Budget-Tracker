@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
 	FiTrendingUp,
 	FiTrendingDown,
@@ -23,6 +23,8 @@ const Dashboard = () => {
 		lastSevenDaysIncome,
 		lastSevenDaysExpenses,
 		totalLastSevenDaysBalance,
+		currency,
+		setCurrency,
 	} = useContext(UserContext);
 
 	useEffect(() => {
@@ -33,9 +35,32 @@ const Dashboard = () => {
 	const handleViewTransaction = () => {
 		navigate("/transactions");
 	};
+
+	const currencies = [
+		{ currencyName: "Naira", symbol: "₦" },
+		{ currencyName: "US Dollars", symbol: "$" },
+		{ currencyName: "Pounds Sterling", symbol: "£" },
+		{ currencyName: "Euro", symbol: "€" },
+	];
+
+	const handleChange = (e) => {
+		const selected = currencies.filter(
+			(currency) => currency.currencyName === e.target.value
+		);
+		setCurrency(selected[0]);
+	};
 	return (
 		<div className="dashboard-page">
-			<h1>Dashboard</h1>
+			<header className="flex space-between align-center">
+				<h1>Dashboard</h1>
+				<select onChange={handleChange} value={currency.currencyName || ""}>
+					{currencies.map((c) => (
+						<option key={c.symbol} value={c.currencyName}>
+							{c.currencyName}
+						</option>
+					))}
+				</select>
+			</header>
 			<div className="total-section">
 				<div className="list flex align-center rounded-1 bal">
 					<FiCreditCard className="icon" size={40} />
@@ -77,18 +102,27 @@ const Dashboard = () => {
 										<FiPlus />
 										Income:
 									</span>
-									<span>${lastSevenDaysIncome}</span>
+									<span>
+										{currency.symbol}
+										{lastSevenDaysIncome}
+									</span>
 								</div>
 								<div className="text flex align-center fw-bold">
 									<span className="flex align-center">
 										<FiMinus />
 										Expense:
 									</span>
-									<span>${lastSevenDaysExpenses}</span>
+									<span>
+										{currency.symbol}
+										{lastSevenDaysExpenses}
+									</span>
 								</div>
 							</div>
 						</div>
-						<p>Net: ${totalLastSevenDaysBalance.toFixed(1)}</p>
+						<p>
+							Net: {currency.symbol}
+							{totalLastSevenDaysBalance.toFixed(1)}
+						</p>
 					</div>
 					<div className="semi-trans rounded-1">
 						<div className="header flex space-between align-center">
@@ -105,14 +139,18 @@ const Dashboard = () => {
 								</div>
 							</div>
 							<div className="table-body">
-								{transactions.slice(0, 5).map((transaction) => (
-									<div className="items" key={transaction.id}>
-										<div className="item">{transaction.title}</div>
-										<div className="item">{transaction.type}</div>
-										<div className="item">{transaction.amount}</div>
-										<div className="item">{transaction.date}</div>
-									</div>
-								))}
+								{transactions.length > 0 ? (
+									transactions.slice(0, 5).map((transaction) => (
+										<div className="items" key={transaction.id}>
+											<div className="item">{transaction.title}</div>
+											<div className="item">{transaction.type}</div>
+											<div className="item">{transaction.amount}</div>
+											<div className="item">{transaction.date}</div>
+										</div>
+									))
+								) : (
+									<p className="Mssg">No recent transaction</p>
+								)}
 							</div>
 						</div>
 					</div>
@@ -120,31 +158,35 @@ const Dashboard = () => {
 				<div className="right rounded ">
 					<h2>Goal Progress</h2>
 					<div className="box flex flex-col g-15">
-						{mockGoals.map((goal, index) => {
-							const goalPercentage = percentage[index];
+						{mockGoals.length > 0 ? (
+							mockGoals.map((goal, index) => {
+								const goalPercentage = percentage[index];
 
-							return (
-								<div
-									className="item rounded flex flex-col g-15 p-20"
-									key={goal.id}
-								>
-									<h3>{goal.title}</h3>
-									<p className="flex g-5">
-										<span>{goal.currentAmount}</span>/
-										<span>{goal.targetAmount}</span>
-									</p>
-									<div className="p-bar rounded-1">
-										<div
-											className="p-bar-filled rounded-1"
-											style={{
-												width: animated ? `${goalPercentage}%` : 0,
-											}}
-										></div>
+								return (
+									<div
+										className="item rounded flex flex-col g-15 p-20"
+										key={goal.id}
+									>
+										<h3>{goal.title}</h3>
+										<p className="flex g-5">
+											<span>{goal.currentAmount}</span>/
+											<span>{goal.targetAmount}</span>
+										</p>
+										<div className="p-bar rounded-1">
+											<div
+												className="p-bar-filled rounded-1"
+												style={{
+													width: animated ? `${goalPercentage}%` : 0,
+												}}
+											></div>
+										</div>
+										<p>{goalPercentage.toFixed(1)}% complete</p>
 									</div>
-									<p>{goalPercentage.toFixed(1)}% complete</p>
-								</div>
-							);
-						})}
+								);
+							})
+						) : (
+							<p className="Mssg">No Goals Found</p>
+						)}
 					</div>
 				</div>
 			</section>

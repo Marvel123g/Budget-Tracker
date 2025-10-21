@@ -7,10 +7,11 @@ import Guide from "./components/Guide";
 import Calculator from "./components/Calculator";
 import Settings from "./components/Settings";
 import Help from "./components/Help";
-import Logout from "./components/Logout";
+// import Logout from "./components/Logout";
 import { UserProvider } from "./context/contextAPI";
 import Subscriptions from "./components/Subscriptions";
 import Reminder from "./components/Reminder";
+import Reset from "./components/Reset";
 // import Budget from "./components/Budget";
 
 function App() {
@@ -29,7 +30,7 @@ function App() {
 					<Route path="/calculator" element={<Calculator />} />
 					{/* <Route path="/settings" element={<Settings/>}/> */}
 					<Route path="/help" element={<Help />} />
-					<Route path="/logout" element={<Logout />} />
+					<Route path="/reset" element={<Reset />} />
 				</Routes>
 			</UserProvider>
 		</>

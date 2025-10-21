@@ -6,7 +6,8 @@ import ViewSubscription from "../modals/ViewSubscription";
 import useWindowSize from "../hook/useWindowSize";
 
 const Subscriptions = () => {
-	const { subscriptionData, setSubscriptionData } = useContext(UserContext);
+	const { subscriptionData, setSubscriptionData, currency } =
+		useContext(UserContext);
 	const [showSubForm, setShowSubForm] = useState(false);
 	const [selectedSub, setSelectedSub] = useState(null);
 	const [view, setView] = useState(false);
@@ -62,39 +63,46 @@ const Subscriptions = () => {
 							</div>
 
 							<div className="table-body">
-								{subscriptionData.map((sub) => (
-									<div className="items" key={sub.id}>
-										<div className="item">{sub.name}</div>
-										<div className="item">${sub.amount.toFixed(2)}</div>
-										<div className="item">{sub.frequency}</div>
-										<div className="item">{sub.nextDueDate}</div>
-										<div className="item">
-											<span>
-												{new Date() > new Date(sub.nextDueDate)
-													? "Done"
-													: "Pending"}
-											</span>
+								{subscriptionData.length > 0 ? (
+									subscriptionData.map((sub) => (
+										<div className="items" key={sub.id}>
+											<div className="item">{sub.name}</div>
+											<div className="item">
+												{currency.symbol}
+												{sub.amount.toFixed(2)}
+											</div>
+											<div className="item">{sub.frequency}</div>
+											<div className="item">{sub.nextDueDate}</div>
+											<div className="item">
+												<span>
+													{new Date() > new Date(sub.nextDueDate)
+														? "Done"
+														: "Pending"}
+												</span>
+											</div>
+											<div className="item action flex align-center g-5">
+												<button className="icon">
+													<FiEdit3
+														size={18}
+														onClick={() => {
+															setSelectedSub(sub);
+															setEdit(true);
+															setShowSubForm(true);
+														}}
+													/>
+												</button>
+												<button
+													className="icon"
+													onClick={() => handleDelete(sub)}
+												>
+													<FiTrash2 size={18} />
+												</button>
+											</div>
 										</div>
-										<div className="item action flex align-center g-5">
-											<button className="icon">
-												<FiEdit3
-													size={18}
-													onClick={() => {
-														setSelectedSub(sub);
-														setEdit(true);
-														setShowSubForm(true);
-													}}
-												/>
-											</button>
-											<button
-												className="icon"
-												onClick={() => handleDelete(sub)}
-											>
-												<FiTrash2 size={18} />
-											</button>
-										</div>
-									</div>
-								))}
+									))
+								) : (
+									<p className="Mssg">No Subscription Found</p>
+								)}
 							</div>
 						</>
 					)}
@@ -109,33 +117,43 @@ const Subscriptions = () => {
 							</div>
 
 							<div className="table-body">
-								{subscriptionData.map((sub) => (
-									<div className="items" key={sub.id}>
-										<div className="item">{sub.name}</div>
-										<div className="item">${sub.amount.toFixed(2)}</div>
-										<div className="item action flex align-center g-5">
-											<button className="icon" onClick={() => handleView(sub)}>
-												View
-											</button>
-											<button className="icon">
-												<FiEdit3
-													size={18}
-													onClick={() => {
-														setSelectedSub(sub);
-														setEdit(true);
-														setShowSubForm(true);
-													}}
-												/>
-											</button>
-											<button
-												className="icon"
-												onClick={() => handleDelete(sub)}
-											>
-												<FiTrash2 size={18} />
-											</button>
+								{subscriptionData.length > 0 ? (
+									subscriptionData.map((sub) => (
+										<div className="items" key={sub.id}>
+											<div className="item">{sub.name}</div>
+											<div className="item">
+												{currency.symbol}
+												{sub.amount.toFixed(2)}
+											</div>
+											<div className="item action flex align-center g-5">
+												<button
+													className="icon"
+													onClick={() => handleView(sub)}
+												>
+													View
+												</button>
+												<button className="icon">
+													<FiEdit3
+														size={18}
+														onClick={() => {
+															setSelectedSub(sub);
+															setEdit(true);
+															setShowSubForm(true);
+														}}
+													/>
+												</button>
+												<button
+													className="icon"
+													onClick={() => handleDelete(sub)}
+												>
+													<FiTrash2 size={18} />
+												</button>
+											</div>
 										</div>
-									</div>
-								))}
+									))
+								) : (
+									<p className="Mssg">No Subscription Found</p>
+								)}
 							</div>
 						</>
 					)}

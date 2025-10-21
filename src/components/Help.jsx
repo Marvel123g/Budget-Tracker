@@ -61,6 +61,15 @@ const Help = () => {
 				</span>
 			),
 		},
+		{
+			title: "7. Resetting Budget Tracket",
+			info: (
+				<span>
+					All transactions, goals, reminders, subscriptions are deleted
+					permanently.
+				</span>
+			),
+		},
 	];
 
 	return (

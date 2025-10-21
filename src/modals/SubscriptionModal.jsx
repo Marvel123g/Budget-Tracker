@@ -16,29 +16,12 @@ const SubscriptionModal = ({
 	const [nextDueDate, setNextDueDate] = useState(
 		editSubData ? editSubData.nextDueDate : ""
 	);
+	const [errors, setErrors] = useState({});
 
-	// const handleSubmit = (e) => {
-	// 	e.preventDefault();
-	// 	if (editSubData) {
-	// 		editSub(editSubData.id, {
-	// 			name,
-	// 			amount: Number(amount),
-	// 			frequency,
-	// 			nextDueDate,
-	// 		});
-	// 	} else {
-	// 		const newSubscription = {
-	// 			id: Date.now(),
-	// 			name,
-	// 			amount: Number(amount),
-	// 			frequency,
-	// 			nextDueDate,
-	// 		};
-	// 		setSubscriptionData((prev) => [newSubscription, ...prev]);
-	// 	}
-	// 	handleCloseSubForm();
-	// };
 	const handleSubmit = () => {
+		const newErrors = {};
+		let hasError = false;
+
 		if (editSubData) {
 			editSub(editSubData.id, {
 				name,
@@ -46,7 +29,21 @@ const SubscriptionModal = ({
 				frequency,
 				nextDueDate,
 			});
-		} else {
+		}
+		if (!name) {
+			newErrors.name = "This Field cannot be blank";
+			hasError = true;
+		}
+		if (!amount) {
+			newErrors.amount = "This Field cannot be blank";
+			hasError = true;
+		}
+		if (!frequency) {
+			newErrors.frequency = "This Field cannot be blank";
+			hasError = true;
+		}
+		setErrors(newErrors);
+		if (!hasError) {
 			const newSubscription = {
 				id: Date.now(),
 				name,
@@ -55,8 +52,9 @@ const SubscriptionModal = ({
 				nextDueDate,
 			};
 			setSubscriptionData((prev) => [newSubscription, ...prev]);
+			handleCloseSubForm();
 		}
-		handleCloseSubForm();
+		// handleCloseSubForm();
 	};
 	return (
 		<div
@@ -76,6 +74,7 @@ const SubscriptionModal = ({
 						value={name}
 						onChange={(e) => setName(e.target.value)}
 					/>
+					{errors && <p className="errorMssg">{errors.name}</p>}
 				</fieldset>
 				<fieldset className="flex flex-col">
 					<label htmlFor="amount">Amount</label>
@@ -84,22 +83,28 @@ const SubscriptionModal = ({
 						value={amount}
 						onChange={(e) => setAmount(e.target.value)}
 					/>
+
+					{errors && <p className="errorMssg">{errors.amount}</p>}
 				</fieldset>
-				<select
-					name="frequency"
-					value={frequency}
-					onChange={(e) => setFrequency(e.target.value)}
-				>
-					<option value="" disabled className="fw-bold">
-						Frequency
-					</option>
-					<option value="Weekly" className="fw-bold">
-						Weekly
-					</option>
-					<option value="Monthly" className="fw-bold">
-						Monthly
-					</option>
-				</select>
+				<div>
+					<select
+						name="frequency"
+						value={frequency}
+						onChange={(e) => setFrequency(e.target.value)}
+					>
+						<option value="" disabled className="fw-bold">
+							Frequency
+						</option>
+						<option value="Weekly" className="fw-bold">
+							Weekly
+						</option>
+						<option value="Monthly" className="fw-bold">
+							Monthly
+						</option>
+					</select>
+					{errors && <p className="errorMssg">{errors.frequency}</p>}
+				</div>
+
 				<fieldset className="flex flex-col">
 					<label htmlFor="next due date">Next Due Date</label>
 					<input

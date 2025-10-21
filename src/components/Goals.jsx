@@ -25,6 +25,7 @@ const Goals = () => {
 		setAnimated,
 		setShowDeleteModal,
 		showDeleteModal,
+		currency,
 	} = useContext(UserContext);
 	const [goalForm, setGoalForm] = useState(false);
 	const [selectedGoal, setSelectedGoal] = useState(null);
@@ -97,7 +98,11 @@ const Goals = () => {
 				<div className="goal flex align-center rounded p-20 g-15">
 					<FiDollarSign className="icon rounded" size={45} />
 					<div className="text flex flex-col rounded g-5">
-						<h2> ${totalSaved}</h2>
+						<h2>
+							{" "}
+							{currency.symbol}
+							{totalSaved}
+						</h2>
 						<p>Total Saved</p>
 					</div>
 				</div>
@@ -122,59 +127,71 @@ const Goals = () => {
 			</div>
 
 			<div className="goal-box">
-				{mockGoals.map((goal, index) => {
-					const goalPercentage = percentage[index];
+				{mockGoals.length > 0 ? (
+					mockGoals.map((goal, index) => {
+						const goalPercentage = percentage[index];
 
-					return (
-						<div className="list rounded p-25" key={goal.id}>
-							<header>
-								<div className="list-header flex align-center space-between">
-									<h2>{goal.title}</h2>
-									<div className="goal-action flex ">
-										<button className="icon">
-											<FiEdit3
-												size={18}
-												onClick={() => {
-													setSelectedGoal(goal);
-													setEditing(true);
-													setGoalForm(true);
-												}}
-											/>
-										</button>
-										<button
-											className="icon"
-											onClick={() => handleDeleteMssg(goal)}
-										>
-											<FiTrash2 size={18} />
-										</button>
+						return (
+							<div className="list rounded p-25" key={goal.id}>
+								<header>
+									<div className="list-header flex align-center space-between">
+										<h2>{goal.title}</h2>
+										<div className="goal-action flex ">
+											<button className="icon">
+												<FiEdit3
+													size={18}
+													onClick={() => {
+														setSelectedGoal(goal);
+														setEditing(true);
+														setGoalForm(true);
+													}}
+												/>
+											</button>
+											<button
+												className="icon"
+												onClick={() => handleDeleteMssg(goal)}
+											>
+												<FiTrash2 size={18} />
+											</button>
+										</div>
+									</div>
+									<p className="des">{goal.description}</p>
+									<div className="completed flex align-center g-5">
+										<FiCalendar />
+										<p>{goal.targetDate}</p>
+									</div>
+								</header>
+
+								<div className="progress-section">
+									<div className="p-header flex align-center space-between">
+										<h3>Progress</h3>
+										<p>
+											%{goalPercentage > 0 ? goalPercentage.toFixed(1) : "0"}
+										</p>
+									</div>
+									<div className="p-bar rounded-1">
+										<div
+											className="p-bar-filled rounded-1"
+											style={{ width: animated ? `${goalPercentage}%` : 0 }}
+										></div>
+									</div>
+									<div className="p-amount flex space-between">
+										<p>
+											{currency.symbol}
+											{goal.currentAmount.toFixed(2)}
+										</p>
+										<p>
+											of {currency.symbol}
+											{goal.targetAmount.toFixed(2)}
+										</p>
 									</div>
 								</div>
-								<p className="des">{goal.description}</p>
-								<div className="completed flex align-center g-5">
-									<FiCalendar />
-									<p>{goal.targetDate}</p>
-								</div>
-							</header>
-
-							<div className="progress-section">
-								<div className="p-header flex align-center space-between">
-									<h3>Progress</h3>
-									<p>%{goalPercentage > 0 ? goalPercentage.toFixed(1) : "0"}</p>
-								</div>
-								<div className="p-bar rounded-1">
-									<div
-										className="p-bar-filled rounded-1"
-										style={{ width: animated ? `${goalPercentage}%` : 0 }}
-									></div>
-								</div>
-								<div className="p-amount flex space-between">
-									<p>${goal.currentAmount.toFixed(2)}</p>
-									<p>of ${goal.targetAmount.toFixed(2)}</p>
-								</div>
 							</div>
-						</div>
-					);
-				})}
+						);
+					})
+				) : (
+					<p className="Mssg">No Goals Found. Add a New Goal</p>
+				)}
 			</div>
 
 			{goalForm && editing && (

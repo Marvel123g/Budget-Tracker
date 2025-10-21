@@ -14,6 +14,7 @@ const Transaction = () => {
 		totalExpenses,
 		showDeleteModal,
 		setShowDeleteModal,
+		currency,
 	} = useContext(UserContext);
 	const { width } = useWindowSize();
 	const [showView, setShowView] = useState(false);
@@ -147,11 +148,17 @@ const Transaction = () => {
 					<p>TOTAL TRANSACTIONS</p>
 				</div>
 				<div className="t-income flex flex-col align-center g-15 rounded-1 p-20">
-					<span className="fw-bold">${totalIncome.toFixed(2)}</span>
+					<span className="fw-bold">
+						{currency.symbol}
+						{totalIncome.toFixed(2)}
+					</span>
 					<p>TOTAL INCOME</p>
 				</div>
 				<div className="t-expenses flex flex-col align-center g-15 rounded-1 p-20">
-					<span className="fw-bold">${totalExpenses.toFixed(2)}</span>
+					<span className="fw-bold">
+						{currency.symbol}
+						{totalExpenses.toFixed(2)}
+					</span>
 					<p>TOTAL EXPENSES</p>
 				</div>
 				<div className="category flex flex-col align-center g-15 rounded-1 p-20">

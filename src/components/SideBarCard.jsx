@@ -15,7 +15,9 @@ import {
 	FiRepeat,
 	FiBell,
 	FiUser,
+	FiAlertOctagon,
 } from "react-icons/fi";
+import { FaCalculator } from "react-icons/fa";
 const SideBarCard = ({ activePage, onLinkClick }) => {
 	return (
 		<>
@@ -101,8 +103,8 @@ const SideBarCard = ({ activePage, onLinkClick }) => {
 						}`}
 						onClick={onLinkClick}
 					>
-						<FiPercent className="icon" />
-						<p>Savings Goal Calculator</p>
+						<FaCalculator className="icon" />
+						<p>Savings Target</p>
 					</Link>
 				</div>
 			</div>
@@ -118,14 +120,14 @@ const SideBarCard = ({ activePage, onLinkClick }) => {
 					<p>Help</p>
 				</Link>
 				<Link
-					to="/logout"
+					to="/reset"
 					className={`link-btn align-center flex fw-bold ${
 						activePage === "logout" ? "active" : ""
 					}`}
 					onClick={onLinkClick}
 				>
-					<FiLogOut className="icon" />
-					<p>Logout</p>
+					<FiAlertOctagon className="icon" />
+					<p>Reset</p>
 				</Link>
 			</div>
 		</>

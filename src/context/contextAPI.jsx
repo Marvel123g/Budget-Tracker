@@ -220,7 +220,53 @@ export const UserProvider = ({ children }) => {
 
 	useEffect(() => {
 		localStorage.setItem("sub", JSON.stringify(subscriptionData));
-	}, subscriptionData);
+	}, [subscriptionData]);
+
+	const [reminderData, setReminderData] = useState(() => {
+		const savedReminder = localStorage.getItem("reminder");
+		return savedReminder
+			? JSON.parse(savedReminder)
+			: [
+					{
+						id: 1,
+						title: "Pay electricity bill",
+						dueDate: "2025-11-05",
+					},
+					{
+						id: 2,
+						title: "Save $200 for December travel",
+						dueDate: "2024-11-30",
+					},
+					{
+						id: 3,
+						title: "Renew car insurance",
+						dueDate: "2024-12-01",
+					},
+					{
+						id: 4,
+						title: "Transfer $50 to savings account",
+						dueDate: "2024-10-25",
+					},
+					{
+						id: 5,
+						title: "Pay credit card bill",
+						dueDate: "2024-10-29",
+					},
+					{
+						id: 6,
+						title: "Buy birthday gift for Mom",
+						dueDate: "2024-11-12",
+					},
+					{
+						id: 7,
+						title: "Review monthly budget",
+						dueDate: "2024-11-01",
+					},
+			  ];
+	});
+	useEffect(() => {
+		localStorage.setItem("reminder", JSON.stringify(reminderData));
+	}, [reminderData]);
 
 	const { width } = useWindowSize();
 
@@ -273,6 +319,18 @@ export const UserProvider = ({ children }) => {
 
 	const [animated, setAnimated] = useState(false);
 	const [showDeleteModal, setShowDeleteModal] = useState(false);
+	const [currency, setCurrency] = useState(() => {
+		const savedCurrency = localStorage.getItem("currency");
+		return savedCurrency
+			? JSON.parse(savedCurrency)
+			: {
+					currencyName: "Naira",
+					symbol: "₦",
+			  };
+	});
+	useEffect(() => {
+		localStorage.setItem("currency", JSON.stringify(currency));
+	});
 
 	return (
 		<UserContext.Provider
@@ -298,6 +356,10 @@ export const UserProvider = ({ children }) => {
 				setSubscriptionData,
 				editSub,
 				totalLastSevenDaysBalance,
+				reminderData,
+				setReminderData,
+				currency,
+				setCurrency,
 			}}
 		>
 			{children}

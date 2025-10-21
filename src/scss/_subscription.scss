@@ -27,12 +27,12 @@
 		.table {
 			cursor: pointer;
 			@include tableStyling;
-			.Mssg {
-				text-align: center;
-				margin: 0;
-				color: red;
-				font-weight: bold;
-			}
+			// .Mssg {
+			// 	text-align: center;
+			// 	margin: 0;
+			// 	color: red;
+			// 	font-weight: bold;
+			// }
 		}
 		.action {
 			@include actionBtnStyle;

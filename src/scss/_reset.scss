@@ -1,0 +1,33 @@
+@use "mixins" as *;
+
+.reset {
+	@include popUpStyle;
+	.wrapper {
+		@include boxStyling;
+		max-width: 480px;
+		text-align: center;
+		h1 {
+			font-size: 1.99rem;
+			margin-bottom: 10px;
+		}
+		.ctas {
+			margin-top: 20px;
+			button {
+				padding: 9px;
+				background-color: transparent;
+				border: none;
+				width: 100%;
+				font-weight: bold;
+				color: white;
+				border-radius: 5px;
+				cursor: pointer;
+				&:nth-child(1) {
+					background-color: #bd5353;
+				}
+				&:nth-child(2) {
+					background-color: #608b37;
+				}
+			}
+		}
+	}
+}

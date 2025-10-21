@@ -38,8 +38,8 @@ const Sidebar = () => {
 			case "/help":
 				setActivePage("help");
 				break;
-			case "/logout":
-				setActivePage("logout");
+			case "/reset":
+				setActivePage("reset");
 				break;
 			default:
 				setActivePage("dashboard");

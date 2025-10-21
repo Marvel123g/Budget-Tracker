@@ -83,7 +83,7 @@ const Budget = () => {
 									></div>
 								</div>
 								<div className="amount flex g-5">
-									<span>${budget.spent}</span> / <span>${budget.limit}</span>
+									<span>₦{budget.spent}</span> / <span>₦{budget.limit}</span>
 									<p>({percentage.toFixed(0)}%)</p>
 								</div>
 							</div>
