@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { AiFillCalculator } from "react-icons/ai";
 import { FaCalculator } from "react-icons/fa";
 import { FiPercent } from "react-icons/fi";
+import UserContext from "../context/contextAPI";
 
 const Calculator = () => {
 	const [goalValue, setGoalValue] = useState("");
@@ -11,6 +12,9 @@ const Calculator = () => {
 	const [goalValueError, setGoalValueError] = useState("");
 	const [savingError, setSavingError] = useState("");
 	const [contributionError, setContributionError] = useState("");
+
+	const { setCurrencyValue, currency, currencies, setCurrency } =
+		useContext(UserContext);
 
 	const handleCalculate = () => {
 		let isValid = true;
@@ -74,9 +78,16 @@ const Calculator = () => {
 				dayResult = `${days} ${days === 1 || days === 0 ? "day" : "days"}`;
 			}
 			setShowDate(
-				`It will take you ${yearResult}, ${monthResult} and ${dayResult} to achieve ${G}`
+				`It will take you ${yearResult}, ${monthResult} and ${dayResult} to achieve ${currency.symbol}${G}`
 			);
 		}
+	};
+
+	const handleChange = (e) => {
+		const selected = currencies.filter(
+			(currency) => currency.currencyName === e.target.value
+		);
+		setCurrency(selected[0]);
 	};
 
 	return (
@@ -88,6 +99,20 @@ const Calculator = () => {
 					<h3>Savings Goal Calculator</h3>
 				</div>
 				<form>
+					<div className="currencySection">
+						<p>Select your preferred currency</p>
+						<select
+							onChange={handleChange}
+							value={currency.currencyName || ""}
+							name="currencySymbol"
+						>
+							{currencies.map((c) => (
+								<option key={c.symbol} value={c.currencyName}>
+									{c.symbol} {c.currencyName}
+								</option>
+							))}
+						</select>
+					</div>
 					<fieldset className="flex flex-col g-5">
 						<label htmlFor="goal amount">Goal Amount</label>
 						<input

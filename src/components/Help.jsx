@@ -13,7 +13,16 @@ const Help = () => {
 			),
 		},
 		{
-			title: "2. Adding & Editing Transactions",
+			title: "2. Changing Currency",
+			info: (
+				<span>
+					In the Dashboard page on the top right corner currency can be changed
+					to Naiara, Dollar, Pound or Euro.
+				</span>
+			),
+		},
+		{
+			title: "3. Adding & Editing Transactions",
 			info: (
 				<span>
 					Go to the Transactions page, Use the button to{" "}

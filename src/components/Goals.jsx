@@ -26,6 +26,8 @@ const Goals = () => {
 		setShowDeleteModal,
 		showDeleteModal,
 		currency,
+		currencies,
+		setCurrencyValue,
 	} = useContext(UserContext);
 	const [goalForm, setGoalForm] = useState(false);
 	const [selectedGoal, setSelectedGoal] = useState(null);
@@ -99,9 +101,9 @@ const Goals = () => {
 					<FiDollarSign className="icon rounded" size={45} />
 					<div className="text flex flex-col rounded g-5">
 						<h2>
-							{" "}
 							{currency.symbol}
-							{totalSaved}
+							{setCurrencyValue(currency.symbol, totalSaved)}
+							{/* {totalSaved} */}
 						</h2>
 						<p>Total Saved</p>
 					</div>
@@ -178,11 +180,11 @@ const Goals = () => {
 									<div className="p-amount flex space-between">
 										<p>
 											{currency.symbol}
-											{goal.currentAmount.toFixed(2)}
+											{setCurrencyValue(currency.symbol, goal.currentAmount)}
 										</p>
 										<p>
 											of {currency.symbol}
-											{goal.targetAmount.toFixed(2)}
+											{setCurrencyValue(currency.symbol, goal.targetAmount)}
 										</p>
 									</div>
 								</div>

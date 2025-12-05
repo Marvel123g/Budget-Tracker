@@ -1,7 +1,7 @@
 import React from "react";
 import { FiX } from "react-icons/fi";
 
-const View = ({ handleViewButton, transaction }) => {
+const View = ({ handleViewButton, transaction, currency }) => {
 	return (
 		<div
 			className="view-page flex align-center justify-center"
@@ -19,7 +19,7 @@ const View = ({ handleViewButton, transaction }) => {
 							<span>{transaction.title}</span>
 						</div>
 						<div className="page-list flex g-5 align-center">
-							<b>Amount:</b>
+							<b>Amount({currency.symbol}):</b>
 							<span>{transaction.amount}</span>
 						</div>
 						<div className="page-list flex g-5 align-center">

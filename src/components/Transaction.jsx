@@ -15,6 +15,7 @@ const Transaction = () => {
 		showDeleteModal,
 		setShowDeleteModal,
 		currency,
+		setCurrencyValue,
 	} = useContext(UserContext);
 	const { width } = useWindowSize();
 	const [showView, setShowView] = useState(false);
@@ -150,14 +151,17 @@ const Transaction = () => {
 				<div className="t-income flex flex-col align-center g-15 rounded-1 p-20">
 					<span className="fw-bold">
 						{currency.symbol}
-						{totalIncome.toFixed(2)}
+						{setCurrencyValue(currency.symbol, totalIncome)}
+						{/* {totalIncome.toFixed(2)} */}
 					</span>
 					<p>TOTAL INCOME</p>
 				</div>
 				<div className="t-expenses flex flex-col align-center g-15 rounded-1 p-20">
 					<span className="fw-bold">
 						{currency.symbol}
-						{totalExpenses.toFixed(2)}
+						{setCurrencyValue(currency.symbol, totalExpenses)}
+						{/* {currency.symbol}
+						{totalExpenses.toFixed(2)} */}
 					</span>
 					<p>TOTAL EXPENSES</p>
 				</div>
@@ -173,7 +177,7 @@ const Transaction = () => {
 						{!mobile && (
 							<div className="list">
 								<div className="item">TRANSACTION</div>
-								<div className="item">AMOUNT</div>
+								<div className="item">AMOUNT ({currency.symbol})</div>
 								<div className="item">CATEGORY</div>
 								<div className="item">DATE</div>
 								<div className="item">TYPE</div>
@@ -183,7 +187,7 @@ const Transaction = () => {
 						{mobile && (
 							<div className="list">
 								<div className="item">TRANSACTION</div>
-								<div className="item">AMOUNT</div>
+								<div className="item">AMOUNT ({currency.symbol})</div>
 								{/* <th>CATEGORY</th>
 							<th>DATE</th>
 							<th>TYPE</th> */}
@@ -198,7 +202,10 @@ const Transaction = () => {
 								filteredSearch.map((transaction) => (
 									<div className="items" key={transaction.id}>
 										<div className="item">{transaction.title}</div>
-										<div className="item">{transaction.amount}</div>
+										<div className="item">
+											{currency.symbol}{" "}
+											{setCurrencyValue(currency.symbol, transaction.amount)}
+										</div>
 										<div className="item">
 											<span>{transaction.category}</span>
 										</div>
@@ -242,7 +249,11 @@ const Transaction = () => {
 								filteredSearch.map((transaction) => (
 									<div className="items" key={transaction.id}>
 										<div className="item">{transaction.title}</div>
-										<div className="item">{transaction.amount}</div>
+										<div className="item">
+											{currency.symbol}{" "}
+											{setCurrencyValue(currency.symbol, transaction.amount)}
+										</div>
+
 										{/* <td>
 										<span>{transaction.category}</span>
 									</td>
@@ -286,12 +297,14 @@ const Transaction = () => {
 				<View
 					handleViewButton={handleCloseView}
 					transaction={selectedTransaction}
+					currency={currency}
 				/>
 			)}
 			{showAddTransactionForm && isEditing && (
 				<NewTransactionForm
 					handleCloseAddTransaction={handleCloseAddTransaction}
 					editData={selectedTransaction}
+					currency={currency}
 				/>
 			)}
 			{showDeleteModal && selectedTransaction && (

@@ -25,6 +25,8 @@ const Dashboard = () => {
 		totalLastSevenDaysBalance,
 		currency,
 		setCurrency,
+		currencies,
+		setCurrencyValue,
 	} = useContext(UserContext);
 
 	useEffect(() => {
@@ -36,19 +38,13 @@ const Dashboard = () => {
 		navigate("/transactions");
 	};
 
-	const currencies = [
-		{ currencyName: "Naira", symbol: "₦" },
-		{ currencyName: "US Dollars", symbol: "$" },
-		{ currencyName: "Pounds Sterling", symbol: "£" },
-		{ currencyName: "Euro", symbol: "€" },
-	];
-
 	const handleChange = (e) => {
 		const selected = currencies.filter(
 			(currency) => currency.currencyName === e.target.value
 		);
 		setCurrency(selected[0]);
 	};
+
 	return (
 		<div className="dashboard-page">
 			<header className="flex space-between align-center">
@@ -104,7 +100,7 @@ const Dashboard = () => {
 									</span>
 									<span>
 										{currency.symbol}
-										{lastSevenDaysIncome}
+										{setCurrencyValue(currency.symbol, lastSevenDaysIncome)}
 									</span>
 								</div>
 								<div className="text flex align-center fw-bold">
@@ -114,14 +110,14 @@ const Dashboard = () => {
 									</span>
 									<span>
 										{currency.symbol}
-										{lastSevenDaysExpenses}
+										{setCurrencyValue(currency.symbol, lastSevenDaysExpenses)}
 									</span>
 								</div>
 							</div>
 						</div>
 						<p>
 							Net: {currency.symbol}
-							{totalLastSevenDaysBalance.toFixed(1)}
+							{setCurrencyValue(currency.symbol, totalLastSevenDaysBalance)}
 						</p>
 					</div>
 					<div className="semi-trans rounded-1">
