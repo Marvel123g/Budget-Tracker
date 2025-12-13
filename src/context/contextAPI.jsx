@@ -344,11 +344,11 @@ export const UserProvider = ({ children }) => {
     if (currencySymbol === "₦") {
       return currencyValue;
     } else if (currencySymbol === "$") {
-      return (currencyValue / 1451).toFixed(2); // Demo unit price
+      return (currencyValue / 1451).toFixed(2);
     } else if (currencySymbol === "£") {
-      return (currencyValue / 1936).toFixed(2); // Demo unit price
+      return (currencyValue / 1936).toFixed(2);
     } else if (currencySymbol === "€") {
-      return (currencyValue / 1690).toFixed(2); // Demo unit price
+      return (currencyValue / 1690).toFixed(2);
     } else {
       return currencyValue;
     }
